@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="Arcade Game by Ahmed AlamEldin, Front End Nanodegree project by Udacity">
     <title>Classic Arcade Game | by Ahmed AlamEldin</title>
+    <link rel="icon" href="images/Key.png" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Monda|Philosopher" rel="stylesheet">
 </head>
@@ -12,8 +13,70 @@
         <h1>Classic Arcade Game</h1>
     </header>
 
+    <section class="score-panel">
+        <div>
+            TIME: <span class="clock">0:00</span>
+        </div>
+        <div>
+            <span class="lives"> <b>3</b> </span> LIVES
+            <!-- <ul class="stars">
+                <li>LIVES</li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+            </ul> -->
+        </div>
+        <div>
+            SCORE <span class="moves"> 0 </span>
+        </div>
+        <div class="restart">
+            Restart <a class="fa fa-repeat"></a>
+        </div>
+    </section>
+
+    <!-- Start Modal -->
+    <div class="modal_start hhide">
+        <div class="modal_start_body">
+
+            <h1>Classic Arcade Game</h1>
+
+            <h2><strong>Reach the river</strong></h2>
+            <p><em>RULES :</em></p>
+            <ul>
+                <li>Use the keyboard keys to move the Hero left, right, up and down.</li>
+                <hr>
+                <li>Avoid colliding into any one of the bugs "enemies".</li>
+                <hr>
+                <li>Once the Hero collides with an enemy you will lose one live each time until you reach Zero live, then game will over.</li>
+                <hr>
+                <li>The heart will give you extra live, search for it</li>
+                <hr>
+                <li>The score increases each time the Hero reaches the river and collecting gems can do so.</li>
+                <hr>
+                <li>The score reduced each time the Hero collides the bugs</li>
+            </ul>
+            <p><em>GOOD LUCK ^_^</em></p>
+
+            <h2>Select your Hero</h2>
+
+            <div id="heroes" class="hero-images">
+                <div class="char-boy"><img class="hero char-boy" src="images/boy.png" width="120px"></div>
+                <div class="char-cat-girl"><img class="hero char-cat-girl" src="images/cat-girl.png" width="120px"></div>
+                <div class="char-horn-girl"><img class="hero horn-girl" src="images/horn-girl.png" width="120px"></div>
+                <div class="char-pink-girl"><img class="hero pink-girl" src="images/pink-girl.png" width="120px"></div>
+                <div class="char-princess-girl"><img class="hero princess-girl" src="images/princess-girl.png" width="120px"></div>
+            </div>
+
+            <div class="modal_btns">
+                <button class="modal_start_btn">READY</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Finish modal -->
-    <div class="modal_bkgd">
+    <div class="finish modal_bkgd hide">
         <div class="modal_body">
             <div class="modal_stats">
                 <svg viewBox="-10 -10 500 500">
@@ -36,9 +99,10 @@
                 <button class="modal_btn btn_reply">Reply</button>
             </div>
         </div>
-        </div>
-    <script src="js/resources.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/engine.js"></script>
+    </div>
+
+<script src="js/resources.js"></script>
+<script src="js/app.js"></script>
+<script src="js/engine.js"></script>
 </body>
 </html>

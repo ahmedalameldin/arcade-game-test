@@ -12,11 +12,11 @@ var Enemy = function(x,y,speed) {
     this.resetPos = -this.step;
     this.speed = speed;
 
+
     this.victory = false;
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
-    // console.log(`Enemy x: ${this.x} | y: ${this.y}`);
 };
 
 // Update the enemy's position, required method for game
@@ -72,8 +72,7 @@ class Hero {
         this.y = this.startY;
 
         // This is the image of the player
-        this.sprite = "images/char-boy.png";
-
+        this.sprite = "images/char-pink-girl.png";
     }
 
 // Methods :
@@ -129,23 +128,23 @@ class Hero {
 
 }
 
+// add class Prize()
+    // render()
+    // update()
+    //
+
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
+// New player object "Hero"
+// init allEnemies array
+// for each enemy create & push Enemy object into above array
 const player = new Hero(),
     bug1 = new Enemy(-101, 0, 200),
     bug2 = new Enemy(-101, 83, 300),
     bug3 = new Enemy(-101*2.5, 83, 300),
     allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-
-    // New player object "Hero"
-
-    // init allEnemies array
-    // for each enemy create & push Enemy object into above array
-
-
 
 
 // This listens for key presses and sends the keys to your
@@ -161,3 +160,64 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+
+
+
+/*
+******* Start functions ******
+*/
+
+
+// array will hold selected hero image
+let selectedHeroArr = [];
+
+// selectors
+const heroImages = document.querySelector('.hero-images');
+const startBtn = document.querySelector('.modal_start_btn');
+
+// listen to click
+heroImages.addEventListener('click', event => {
+    const clickTarget = event.target;
+    if (clickTarget.classList.contains('hero')){
+        clickTarget.classList.add('selected');
+        addSelectedHero(clickTarget);
+        selectAndDeselect ();
+        getSpriteString();
+    }
+//console.log('image selected');
+});
+
+// push selected images to "selectedHeroArr" array
+function addSelectedHero(clickTarget) {
+    selectedHeroArr.push(clickTarget);
+    console.log(selectedHeroArr);
+}
+
+// changing css classes
+function selectAndDeselect() {
+    if (selectedHeroArr.length > 1) {
+        //console.log('Seconed Player selected');
+        selectedHeroArr[0].classList.remove("selected");
+        selectedHeroArr[1].classList.add("selected");
+        selectedHeroArr = [selectedHeroArr[1]];
+    };
+
+}
+
+// Get the parent class and returned as a string
+function getSpriteString() {
+    const parent = selectedHeroArr[0].parentElement;
+    let parentString = parent.classList[0];
+    console.log(parentString + ' Menas');
+    return parentString;
+}
+
+
+// startBtn.addEventListener('click', isHeroSelected);
+
+
+// MODAL Start"
+function toggleStartModal() {
+    const modal = document.querySelector('.modal_start');
+    modal.classList.toggle('hide');
+}

@@ -25,8 +25,9 @@ var Engine = (function(global) {
         lastTime,
         id;
 
-        const modal = document.querySelector('.modal_bkgd');
-        const replay = document.querySelector('.modal_btns');
+        const modal = document.querySelector('.finish');
+        const replay = document.querySelector('.finish');
+        const startModal = document.querySelector('.modal_start_body');
 
     canvas.width = 505;
     canvas.height = 606;
@@ -68,12 +69,25 @@ var Engine = (function(global) {
          */
         if (player.victory === true) {
             win.cancelAnimationFrame(id);
-            modal.classList.toggle('hide')
+            modal.classList.toggle('hide');
             console.log('Game stops');
         } else {
-            id = win.requestAnimationFrame(main);
+             id = win.requestAnimationFrame(main);
         }
-    }
+    };
+
+    startBtn.addEventListener('click', isHeroSelected);
+
+
+    function isHeroSelected() {
+            if (selectedHeroArr.length === 1) {
+                console.log('you can play');
+
+                toggleStartModal();            }
+            else {
+                alert('Please choose your Hero');
+            }
+    };
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -190,7 +204,11 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-cat-girl.png',
+        'images/char-horn-girl.png',
+        'images/char-pink-girl.png',
+        'images/char-princess-girl.png'
     ]);
     Resources.onReady(init);
 
